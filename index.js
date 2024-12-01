@@ -12,12 +12,17 @@ let taxRate = 5;
 let discountPercentage = 10;
 // let loyaltyRate = 2; // per spend of $1
 
-// Endpoint to return cart total
+// Endpoint to calculate the total price of items in the cart
 app.get('/cart-total', (req, res) => {
   let newItemPrice = parseFloat(req.query.newItemPrice);
   let cartTotal = parseFloat(req.query.cartTotal);
 
-  res.send(cartTotal.toString());
+  let item1Price = 0; 
+  let item2Price = 0;
+  let item3Price = 0;
+
+  let totalCartValue = newItemPrice + item1Price + item2Price + item3Price + cartTotal;
+  res.send(totalCartValue.toString());
 });
 
 function calculateDiscountedPrice(cartTotal, isMember) {
